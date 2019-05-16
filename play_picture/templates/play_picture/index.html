@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>玩图PwP -play with pictures</title>
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader">
+    <div class="preload-content">
+        <div id="sonar-load"></div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+<!-- Grids -->
+<div class="grids d-flex justify-content-between">
+    <div class="grid1"></div>
+    <div class="grid2"></div>
+    <div class="grid3"></div>
+    <div class="grid4"></div>
+    <div class="grid5"></div>
+    <div class="grid6"></div>
+    <div class="grid7"></div>
+    <div class="grid8"></div>
+    <div class="grid9"></div>
+</div>
+
+<!-- ***** Main Menu Area Start ***** -->
+<div class="mainMenu d-flex align-items-center justify-content-between">
+    <!-- Close Icon -->
+    <div class="closeIcon">
+        <i class="ti-close" aria-hidden="true"></i>
+    </div>
+    <!-- Logo Area -->
+    <div class="logo-area">
+        <a href="{% url 'play_picture:index' %}">玩图</a>
+    </div>
+    <!-- Login Area -->
+    <div>
+        <a href="{% url 'play_picture:login' %}">
+            <img height="200" width="200" class="rounded-circle" src="{% static 'img/unlogin.png' %}" alt="">
+        </a><br>
+        <a class="logo-area" id="login_state" href="{% url 'play_picture:login' %}">未登录</a>
+
+    </div>
+    <!-- Nav -->
+    <div class="sonarNav wow fadeInUp" data-wow-delay="1s">
+        <nav>
+            <ul>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'play_picture:index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'play_picture:me' %}">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'play_picture:service' %}">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'play_picture:gallery' %}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://cq6hang.github.io">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'play_picture:contact' %}">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- Copwrite Text -->
+    <div class="copywrite-text">
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear().toString());</script>
+            All rights reserved | Designed by <a
+                    href="https://cq6hang.github.io" target="_blank">LiuHang</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+    </div>
+</div>
+<!-- ***** Main Menu Area End ***** -->
+
+<!-- ***** Header Area Start ***** -->
+<header class="header-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="menu-area d-flex justify-content-between">
+                    <!-- Logo Area  -->
+                    <div class="logo-area">
+                        <a href="{% url 'play_picture:index' %}">玩图</a>PwP
+                    </div>
+
+                    <div class="menu-content-area d-flex align-items-center">
+                        <!-- Header Social Area -->
+                        <div class="header-social-area d-flex align-items-center">
+                            <a href="https://www.pinterest.com/lh1822736980/" data-toggle="tooltip"
+                               data-placement="bottom" title="Pinterest"><i
+                                    class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/%E8%88%AA-%E5%88%98-07a32a119/" data-toggle="tooltip"
+                               data-placement="bottom" title="Linkedin"><i
+                                    class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i
+                                    class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/hang.liu.9678" data-toggle="tooltip"
+                               data-placement="bottom" title="Facebook"><i
+                                    class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/ggpig4" data-toggle="tooltip" data-placement="bottom"
+                               title="Twitter"><i
+                                    class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </div>
+                        <!-- Menu Icon -->
+                        <span class="navbar-toggler-icon" id="menuIcon"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** Hero Area Start ***** -->
+<section class="hero-area">
+    <div class="hero-slides owl-carousel">
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide1.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Sand Storm</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide2.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>New York View</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide3.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>The Desert</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide4.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Mountains Hike</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide1.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Sand Storm</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide2.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>New York View</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide3.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>The Desert</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide4.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Mountains Hike</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide1.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Sand Storm</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide2.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>New York View</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="background-image: url({% static 'img/bg-img/slide3.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>The Desert</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img slide-background-overlay"
+             style="    background-image: url({% static 'img/bg-img/slide4.jpg' %});">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <div class="line"></div>
+                            <h2>Mountains Hike</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                                volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet
+                                neque. Fusce sagittis suscipit sem.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Hero Area End ***** -->
+
+<!-- ***** Portfolio Area Start ***** -->
+<div class="portfolio-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="portfolio-title">
+                    <h2 id="test">“In photography there is a reality so subtle that it becomes more <span>real</span>sthan
+                        reality.”</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-5">
+                <div class="single-portfolio-item mt-100 portfolio-item-1 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                        <h2>Reality</h2>
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p1.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Italy in the sunset</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-6">
+                <div class="single-portfolio-item mt-230 portfolio-item-2 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p2.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Mountain Landscape</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-10">
+                <div class="single-portfolio-item mt-100 portfolio-item-3 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                        <h2>Photography</h2>
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p3.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Foggy sunset over the lake</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-6">
+                <div class="single-portfolio-item portfolio-item-4 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p2.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Clouds on mountain top</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-5">
+                <div class="single-portfolio-item portfolio-item-5 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                        <h2>Hope</h2>
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p5.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Over the canion</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-4">
+                <div class="single-portfolio-item portfolio-item-6 wow fadeIn">
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p6.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Mirror lake</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <!-- Single Portfoio Area -->
+            <div class="col-12 col-md-4">
+                <div class="single-portfolio-item portfolio-item-7 wow fadeIn">
+                    <div class="backend-content">
+                        <img class="dots" src="{% static 'img/core-img/dots.png' %}" alt="">
+                        <h2>Future</h2>
+                    </div>
+                    <div class="portfolio-thumb">
+                        <img src="{% static 'img/bg-img/p7.png' %}" alt="">
+                    </div>
+                    <div class="portfolio-meta">
+                        <p class="portfolio-date">Feb 02, 2018</p>
+                        <h2>Mirror lake</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Portfolio Area End ***** -->
+
+<!-- ***** Call to Action Area Start ***** -->
+<div class="sonar-call-to-action-area section-padding-0-100">
+    <div class="backEnd-content">
+        <h2>Dream</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
+                    <h2>I am ready for it</h2>
+                    <h5>Let’s start</h5>
+                    <a href="{% url 'play_picture:login' %}" class="btn sonar-btn mt-100">start now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Call to Action Area End ***** -->
+
+<!-- ***** Footer Area Start ***** -->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Copywrite Text -->
+                <div class="copywrite-text">
+                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear().toString());</script>
+                        All rights reserved | Designed by <a
+                                href="https://cq6hang.github.io" target="_blank">LiuHang</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ***** Footer Area End ***** -->
+
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+<script>$(document).ready(function () {
+    $("#menuIcon").click(function () {
+        $("#login_state").load("http://127.0.0.1:8000/play_picture/test/", "123");
+    });
+});
+</script>
+<!-- Popper js -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<!-- Bootstrap js -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Plugins js -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- Active js -->
+<script src="{% static 'js/active.js' %}"></script>
+
+</body>
+
+</html>

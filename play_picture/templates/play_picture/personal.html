@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>{{ user.nickname }}的个人空间-玩图PwP</title>
+    <meta name="generator" content="Bootply"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="{% static 'backend/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <link href="{% static 'backend/css/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'play_picture:index' %}">玩图PwP</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {#                <li><a href="#">Dashboard</a></li>#}
+                <li><a href="{% url 'play_picture:gallery' %}">Gallery</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#edit">Settings</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row row-offcanvas row-offcanvas-left">
+
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+
+            <img src="{% static user.headPic %}" class="center-block img-responsive img-circle"
+                 alt="Generic placeholder thumbnail" width="200" height="200"
+                 style="margin-top:40px;margin-bottom:100px">
+
+            <ul class="nav nav-sidebar" style="margin-left: 5px">
+
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">昵称</p>
+                    <p style="font-size: 15px;margin-left: 100px">{{ user.nickname }}</p>
+                </li>
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">个性签名</p>
+                    <p style="font-size: 15px;margin-left: 100px">hello!</p>
+                </li>
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">性别</p>
+                    {% if user.gender == 0 %}
+                        <p style="font-size: 15px;margin-left: 100px">男</p>
+                    {% else %}
+                        <p style="font-size: 15px;margin-left: 100px">女</p>
+                    {% endif %}
+                </li>
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">年龄</p>
+                    <p style="font-size: 15px;margin-left: 100px">{{ user.age }}</p>
+                </li>
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">生日</p>
+                    <p style="font-size: 15px;margin-left: 100px">{{ user.birth }}</p>
+                </li>
+                <hr>
+                <li>
+                    <p style="font-size: 15px;float: left">邮箱</p>
+                    <p style="font-size: 15px;margin-left: 100px">{{ user.email }}</p>
+                </li>
+            </ul>
+            {#            <ul class="nav nav-sidebar">#}
+            {#                <li><a href="">Nav item</a></li>#}
+            {#                <li><a href="">Nav item again</a></li>#}
+            {#                <li><a href="">One more nav</a></li>#}
+            {#                <li><a href="">Another nav item</a></li>#}
+            {#                <li><a href="">More navigation</a></li>#}
+            {#            </ul>#}
+            {#            <ul class="nav nav-sidebar">#}
+            {#                <li><a href="">Nav item again</a></li>#}
+            {#                <li><a href="">One more nav</a></li>#}
+            {#                <li><a href="">Another nav item</a></li>#}
+            {#            </ul>#}
+
+        </div><!--/span-->
+
+        <div class="col-sm-9 col-md-10 main">
+
+            <!--toggle sidebar button-->
+            <p class="visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i
+                        class="glyphicon glyphicon-chevron-left"></i></button>
+            </p>
+            <h1 class="page-header">
+                新建任务
+                {#                                <p class="lead">(<a href="http://www.bootply.com/128936">with off-canvas sidebar</a>)</p>#}
+            </h1>
+
+            <div class="row placeholders  ">
+                <div class="col-xs-6 col-sm-3 placeholder text-center center-block" style="margin-left: 200px">
+                    <img src="{% static 'backend/img/add.png' %}" class="center-block img-responsive "
+                         alt="Generic placeholder thumbnail" width="200" height="200">
+                    <input type="file" id="contentImg" style="margin-left: 125px;margin-top: 30px">
+                </div>
+
+                <div class="col-xs-6 col-sm-3 placeholder text-center center-block" style="margin-left: 150px">
+                    <img src="{% static 'backend/img/add.png' %}" class="center-block img-responsive "
+                         alt="Generic placeholder thumbnail" width="200" height="200">
+                    <input type="file" id="styleImg" style="margin-left: 125px;margin-top: 30px">
+                </div>
+
+                <button id="task_btn" type="button" class="btn"
+                        style="margin-top: 210px;margin-left: 80px;width: 150px;height: 40px">
+                    合成图片
+                </button>
+
+            </div>
+
+            <hr>
+
+            <h1 class="page-header">
+                我的图片
+                {#                                <p class="lead">(<a href="http://www.bootply.com/128936">with off-canvas sidebar</a>)</p>#}
+            </h1>
+
+            <div class="row placeholders">
+
+                {% for picture in user.picture_set.all %}
+                    <div class="col-xs-6 col-sm-3 placeholder text-center" style="margin-top: 10px">
+                        <img src="{% static picture.img_path %}" class="center-block img-responsive "
+                             alt="Generic placeholder thumbnail">
+                        {#                    <h4>Label</h4>#}
+                        {#                    <span class="text-muted">Something else</span>#}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <hr>
+
+            <h2 class="sub-header">任务进度</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>submit time</th>
+                        <th>time cost</th>
+                        <th>progress</th>
+                        <th>state</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in user.task_set.all %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.s_time }}</td>
+                            <td id="cost{{ task.id }}">{{ task.c_time }} s</td>
+                            <td>{{ task.progress }} %</td>
+                            {% if task.state == 0 %}
+                                <td>Running</td>
+                            {% else %}
+                                <td>Complete</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div><!--/row-->
+    </div>
+</div><!--/.container-->
+
+<footer>
+    <p class="pull-right"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;<script>document.write(new Date().getFullYear().toString());</script>
+        All rights reserved | Designed by <a
+                href="https://cq6hang.github.io" target="_blank">LiuHang</a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    </p>
+</footer>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-header" style="background: white">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                "><span
+                    aria-hidden="true" id="close">&times;</span></button>
+            <h4 class="modal-title text-center" id="myModalLabel" style="color: black;font-size: x-large">修改信息</h4>
+        </div>
+        <div class="modal-body" style="background: white">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="昵称：{{ user.nickname }}" required="required"
+                       id="nickname">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="年龄：{{ user.age }}" required="required" id="age">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="邮箱：{{ user.email }}" required="required"
+                       id="email">
+            </div>
+            <div class="form-group">
+                <p style="color: red;float: left" id="hint">提示</p>
+                <p style="visibility: hidden;">占位</p>
+            </div>
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-blue btn-block" id="edit_bnt" style="height: 50px">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- script references -->s
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script>
+    $("#hint").hide();
+    $("#task_btn").click(function () {
+        $.post("{% url 'play_picture:commit new task' %}",
+            {
+                id:{{ user.id }},
+                content: $("#contentImg").val(),
+                style: $("#styleImg").val(),
+            },
+            function (data, status) {
+                if (data.status === "success") {
+                    alert(data.msg);
+                }
+                window.location.href = "{% url 'play_picture:personal' user.id %}"
+            });
+    });
+    $("#edit_bnt").click(function () {
+        $.post("{% url 'play_picture:edit' %}",
+            {
+                id:{{ user.id }},
+                nickname: $("#nickname").val(),
+                age: $("#age").val(),
+                email: $("#email").val(),
+            },
+            function (data, status) {
+                if (data.status === "success") {
+                    $("#hint").text("信息修改成功").show();
+                    window.location.href = "{% url 'play_picture:personal' user.id %}"
+                }
+            });
+    });
+    {% for task in user.task_set.all %}
+        $("#cost{{ task.id }}").text(function () {
+            var t = {{ task.c_time }};
+            var flag = setInterval(function () {
+                {% if task.state == 1 %}
+                    window.clearInterval(flag);
+                {% else %}
+                    t = t + 1;
+                    $("#cost{{ task.id }}").text(t + " s");
+                {% endif %}
+            }, 1000);
+        });
+    {% endfor %}
+</script>
+<script src="{% static 'backend/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backend/js/scripts.js' %}"></script>
+</body>
+</html>
